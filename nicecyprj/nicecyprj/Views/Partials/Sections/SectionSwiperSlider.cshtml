@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+
+@{
+	Layout = null;
+	var homePage = (Home)Model.Root();
+	var slideImages = homePage.LandscapeImages?.ToList();
+}
+
+<div class="w-full relative">
+	<div class="swiper progress-slide-carousel swiper-container relative">
+		<div class="swiper-wrapper">
+			@if (slideImages != null)
+			{
+				for (int i = 0; i < slideImages.Count(); i++)
+				{
+					<style>
+						#swiper-background-@i {
+							background-image: url(@slideImages[i].Url());
+						}
+					</style>
+					<div class="swiper-slide">
+						<div class="bg-indigo-50 flex justify-center items-center h-[80vh]" style="
+						background-repeat: no-repeat;
+						background-position: center;
+						background-size: cover;" id="swiper-background-@i">
+						</div>
+					</div>
+				}
+			}
+		</div>
+	</div>
+</div>

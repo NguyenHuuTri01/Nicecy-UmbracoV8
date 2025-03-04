@@ -1,0 +1,232 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<SearchHotelsModel>
+@using nicecyprj.Models;
+@{
+	Layout = "Master.cshtml";
+}
+
+<style>
+	.fraction-slide-carousel #slider-button-left {
+		background-color: #e4551f !important;
+		width: 30px !important;
+		height: 30px !important;
+	}
+
+	.multiple-slide-carousel #slider-button-left {
+		background-color: #e4551f !important;
+		width: 30px !important;
+		height: 30px !important;
+	}
+
+	.multiple-slide-carousel #slider-button-right {
+		background-color: #e4551f !important;
+		width: 30px !important;
+		height: 30px !important;
+	}
+
+	.multiple-slide-carousel .swiper-button-prev {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+
+	.multiple-slide-carousel .swiper-button-next:after {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+
+	.multiple-slide-carousel .swiper-button-prev:after {
+		font-size: 12px !important;
+		color: #ffffff !important;
+	}
+</style>
+
+
+<div class="min-h-full mt-[30px] container">
+	<!-- Custom Style -->
+	<style>
+		.nav-for-slider .swiper-slide {
+			cursor: pointer;
+			margin-right: 0 !important;
+		}
+
+		.swiper-wrapper {
+			height: auto;
+		}
+
+		.nav-for-slider .swiper-slide img {
+			border: 2px solid transparent;
+			border-radius: 5px;
+		}
+
+		.nav-for-slider .swiper-slide-thumb-active img {
+			border-color: rgb(79 70 229);
+		}
+
+		.lightbox {
+			display: none;
+			position: fixed;
+			z-index: 999;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+			background-color: rgba(0, 0, 0, 0.8);
+		}
+
+		.lightbox-image {
+			display: block;
+			margin: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		.close {
+			color: #fff;
+			font-size: 3em;
+			position: absolute;
+			top: 20px;
+			right: 30px;
+			cursor: pointer;
+		}
+
+		.gallery {
+			width: 90vw;
+			max-width: 1200px;
+			margin: 0 auto;
+			grid-template-rows: 1fr;
+			grid-column-gap: 10px;
+			grid-row-gap: 10px;
+		}
+
+			.gallery img {
+				max-width: 100%;
+				cursor: pointer;
+			}
+
+				.gallery img:hover {
+					max-width: 100%;
+					cursor: pointer;
+				}
+	</style>
+
+
+	<section class="py-[20px]">
+		<div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-3 mx-auto bg-white md:px-[20px] lg:px-[20px] rounded gap-3 mx-auto w-full rounded ">
+			@if (Model.Data != null && Model.Data.Any())
+			{
+				foreach (var hotel in Model.Data)
+				{
+					<div class="flex justify-start items-center w-full">
+						<div class="w-full">
+							<div class="flex flex-col lg:flex-col md:flex-col my-6 bg-white rounded-lg w-full shadow-sm border border-transparent hover:shadow-lg">
+								<div class="p-2.5 md:w-full lg:w-full h-[300px] shrink-0 overflow-hidden shadow-sm hover:shadow-lg">
+									<div class="grid gap-2">
+										<div>
+											<a href="@hotel.Url" target="_blank" class="text-xl">
+												<img src="@hotel.ImgUrl" alt="card-image" class="h-[200px] w-full object-cover rounded-lg">
+											</a>
+
+										</div>
+										<div class="grid grid-cols-3 gap-2">
+											@foreach (var photo in hotel.ImgUrls.Take(3))
+											{
+												<div>
+													<a href="@hotel.Url" target="_blank" class="text-xl">
+														<img class="h-auto max-w-full rounded-lg" src="@photo" alt="">
+													</a>
+												</div>
+											}
+										</div>
+									</div>
+								</div>
+								<div class="p-2 mt-[10px]">
+									<div class="flex flex-row justify-content-start">
+										<div class="mb-4 rounded-full w-auto bg-teal-600 py-0.5 px-2.5 border border-transparent text-white">NICECY</div>
+										<div class="mb-4 rounded-full w-auto bg-teal-600 py-0.5 px-2.5 border border-transparent text-white">@hotel.DistrictName</div>
+									</div>
+
+									<h4 class="mb-2 text-orange-600 text-xl font-semibold">
+										<a href="@hotel.Url" target="_blank" class="text-xl">
+											@hotel.HotelName
+										</a>
+									</h4>
+									<p class="mb-3 text-gray-600 font-bold ">
+										@hotel.HotelDescription
+									</p>
+
+									<div class="grid grid-cols-2 gap-2 md:grid-cols-2 lg:grid-cols-2 ">
+										@foreach (var category in hotel.Features)
+										{
+											<div class="flex gap-2 items-center justify-start">
+												<img src="@category.Icon"
+													  class="w-[16px] h-[16px]"><span class="text-xs text-gray-600 ">
+													@category.FeatureName
+												</span>
+											</div>
+										}
+									</div>
+
+									<div class="w-full mt-[40px] mb-[30px] text-center">
+										<a href="@hotel.Url" class="text-white font-semibold bg-orange-600 p-2 rounded-full hover:bg-orange-500">CHỌN PHÒNG</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+			}
+
+
+		</div>
+
+		@if (Model.Data == null || !Model.Data.Any())
+		{
+			<div class="mx-auto flex flex-col justify-center gap-5 text-center w-full">
+				<img src="https://cdn-icons-png.flaticon.com/512/8209/8209385.png" style="width:200px; height:200px" class="mx-auto" />
+				<span class="text-base">Không tìm thấy khách sạn. Bạn vui lòng kiểm tra lại ngày đến và ngày đi nhé.</span>
+			</div>
+		}
+	</section>
+</div>
+<!-- Custom Slider -->
+<script>
+	var swiper_thumbs = new Swiper(".nav-for-slider", {
+		loop: true,
+		spaceBetween: 30,
+		slidesPerView: 4,
+	});
+	var swiper = new Swiper(".main-slide-carousel", {
+		slidesPerView: 1,
+		effect: "fade",
+		thumbs: {
+			swiper: swiper_thumbs,
+		},
+	});
+
+	// Get references to elements
+	const gallery = document.querySelector('.gallery');
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImage = document.getElementById('lightbox-image');
+	const closeButton = document.getElementById('close');
+
+	// Add event listener to each image
+	gallery.addEventListener('click', e => {
+		if (e.target.classList.contains('gallery-image')) {
+			const imageSrc = e.target.src;
+			lightboxImage.src = imageSrc;
+			lightbox.style.display = 'flex';
+		}
+	});
+
+	// Close lightbox when close button is clicked
+	closeButton.addEventListener('click', () => {
+		lightbox.style.display = 'none';
+	});
+
+	// Close lightbox when clicking outside the image
+	lightbox.addEventListener('click', e => {
+		if (e.target === lightbox) {
+			lightbox.style.display = 'none';
+		}
+	});
+</script>

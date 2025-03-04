@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+span,
+p,
+a {
+	font-family: "Montserrat", sans-serif !important;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 14px;
+}
+
+.flyoutMenu {
+	display: none;
+}
+
+.flyoutBtn:hover .flyoutMenu {
+	display: block;
+}
+
+.flyoutSearch {
+	display: none;
+}
+
+.flyoutSearchBtn:hover .flyoutSearch {
+	display: block;
+}
+
+.showState {
+	display: block !important;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 200ms;
+}
+
+.swiper-wrapper {
+	width: 100%;
+	height: max-content !important;
+	padding-bottom: 64px !important;
+	-webkit-transition-timing-function: linear !important;
+	transition-timing-function: linear !important;
+	position: relative;
+}
+
+.multiple-slide-carousel #slider-button-left {
+	background-color: #e4551f !important;
+	width: 30px !important;
+	height: 30px !important;
+}
+
+.multiple-slide-carousel #slider-button-right {
+	background-color: #e4551f !important;
+	width: 30px !important;
+	height: 30px !important;
+}
+
+.multiple-slide-carousel .swiper-button-prev {
+	font-size: 12px !important;
+	color: #ffffff !important;
+}
+
+.multiple-slide-carousel .swiper-button-next:after {
+	font-size: 12px !important;
+	color: #ffffff !important;
+}
+
+.multiple-slide-carousel .swiper-button-prev:after {
+	font-size: 12px !important;
+	color: #ffffff !important;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+	background: #4F46E5 !important;
+}
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+	font-size: 12px;
+	color: black;
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+	font-size: 12px;
+	color: black;
+}
+
+[data-tab].active.tab-active\:bg-indigo-600 {
+	background-color: rgb(0, 0, 0) !important;
+}
+
+#daterangeTextbox:focus {
+	outline: none !important;
+}
+
+/* Custom Calendar */
+.applyBtn {
+	background: #ff6a00 !important;
+	border: none !important;
+}
+
+.calendar-table {
+	font-family: "Montserrat", sans-serif !important;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 14px;
+}
+
+.applyBtn {
+	font-family: "Montserrat", sans-serif !important;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 14px;
+}
+
+.cancelBtn {
+	font-family: "Montserrat", sans-serif !important;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 14px;
+}
+
+/* Select2 */
+.select2-container--bootstrap-5 .select2-selection {
+	border: 1px solid #6f6f6f !important
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+	font-size: 13px !important;
+	font-weight: bold !important;
+	color: #e4551f !important;
+}
+
+.select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option {
+	padding: .375rem .75rem;
+	font-size: 13px !important;
+	font-weight: bold !important;
+	line-height: 1.5;
+}
+
+.select2-container--bootstrap-5 .select2-selection--multiple .select2-selection__rendered .select2-selection__choice .select2-selection__choice__remove {
+	color: #e4551f !important;
+}
+
+.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+	font-weight: bold !important;
+}
+
+.select2-results__option select2-results__option--highlighted {
+	font-size: 13px !important;
+	font-weight: bold !important;
+	line-height: 1.5;
+}
+
+.daterangepicker {
+	position: fixed;
+	top: 316px !important;	
+}
+
+@media (max-width: 700px) {
+	.daterangepicker {
+		position: fixed;
+		top: 100px !important;
+	}	
+}
+
